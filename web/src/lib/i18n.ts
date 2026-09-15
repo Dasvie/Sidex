@@ -277,8 +277,9 @@ const KO = {
   // login
   login_help: "등록, 리뷰, 논평에 필요해요. 둘러보기는 로그인 없이 돼요.",
   login_google: "Google로 계속하기",
-  login_kakao: "카카오로 계속하기",
+  login_kakao: "카카오톡으로 계속하기",
   login_naver: "네이버로 계속하기",
+  login_recent: "최근 로그인",
   login_none: "로그인 제공자가 아직 연결되지 않았어요. AUTH_GOOGLE_ID, AUTH_KAKAO_ID, AUTH_NAVER_ID 중 하나를 설정하세요.",
   // 404
   nf_title: "없는 페이지예요.",
@@ -580,6 +581,7 @@ const EN: Record<Key, string> = {
   login_google: "Continue with Google",
   login_kakao: "Continue with Kakao",
   login_naver: "Continue with Naver",
+  login_recent: "Last used",
   login_none: "No login provider is connected yet. Set AUTH_GOOGLE_ID, AUTH_KAKAO_ID or AUTH_NAVER_ID.",
   nf_title: "This page doesn't exist.",
   nf_body: "The address changed, or it isn't public yet.",

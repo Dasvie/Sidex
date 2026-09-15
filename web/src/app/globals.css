@@ -434,8 +434,19 @@ legend { padding: 0; }
 .profile__stats { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 6px; }
 
 /* login */
-.login { max-width: 420px; margin: 64px auto; padding: 32px; }
-.login .btn { width: 100%; margin-top: 10px; }
+.login { max-width: 480px; margin: 72px auto; }
+.login__list { display: grid; gap: 12px; margin-top: 28px; }
+.login__btn { position: relative; display: grid; grid-template-columns: 24px 1fr 24px; align-items: center; width: 100%; min-height: 60px; padding: 0 20px; border: 1px solid transparent; border-radius: 10px; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.12s ease, filter 0.15s ease, box-shadow 0.15s ease; }
+.login__btn:hover { filter: brightness(0.96); }
+.login__btn:active { transform: translateY(1px); }
+.login__btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.login__icon { display: inline-flex; }
+.login__label { text-align: center; }
+.login__btn--kakao { background: #fee500; color: #191919; }
+.login__btn--naver { background: #03c75a; color: #fff; }
+.login__btn--google { background: #fff; color: var(--fg); border-color: var(--border-strong); }
+.login__btn--google:hover { filter: none; background: var(--bg-soft); }
+.login__recent { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); padding: 5px 10px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--card); font-size: 12px; font-weight: 500; color: var(--fg-muted); white-space: nowrap; }
 
 .notfound { padding: 80px 0; display: grid; gap: 12px; justify-items: start; }
 .ok { padding: 12px 14px; border-radius: var(--r-nav); background: var(--bg-strong); font-size: 14px; color: var(--fg); }
