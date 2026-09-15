@@ -94,7 +94,7 @@ npm run e2e                                      # dev 서버를 켜 둔 채로
 
 ## 배포
 
-Vercel, Root Directory `web`. 환경 변수는 [`web/.env.example`](web/.env.example)에 전부 적혀 있어요. 첫 배포 뒤 `npm run db:migrate && npm run db:seed`, 그다음 `npm run db:claim -- sidex <이메일>`로 예시 계정을 실제 계정에 넘겨요.
+Vercel, Root Directory `web`. 환경 변수는 [`web/.env.example`](web/.env.example)에 전부 적혀 있어요. 첫 배포 뒤 `npm run db:migrate && npm run db:seed`, 그다음 `npm run db:claim -- sidex <이메일>`로 예시 계정을 실제 계정에 넘겨요. 빠진 설정은 `/api/health`가 알려줘요.
 
 ## 원칙
 
@@ -105,3 +105,7 @@ Vercel, Root Directory `web`. 환경 변수는 [`web/.env.example`](web/.env.exa
 ## 기여
 
 이슈와 PR 환영해요. 규칙은 [`CLAUDE.md`](CLAUDE.md)에 있어요(에이전트용이지만 사람이 읽어도 같은 내용이에요).
+
+## 라이선스
+
+[MIT](LICENSE)
