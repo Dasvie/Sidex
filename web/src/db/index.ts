@@ -25,11 +25,15 @@ function makePglite() {
   return drizzle(client, { schema }) as unknown as Db;
 }
 
+/* Vercel's Neon integration names the pooled string by its chosen prefix (DATABASE_POSTGRES_URL,
+   POSTGRES_URL); a hand-set DATABASE_URL still wins. */
+export const databaseUrl = process.env.DATABASE_URL || process.env.DATABASE_POSTGRES_URL || process.env.POSTGRES_URL || "";
+
 const globalForDb = globalThis as unknown as { __sidexDb?: Db };
 
 function real(): Db {
   if (!globalForDb.__sidexDb) {
-    globalForDb.__sidexDb = process.env.DATABASE_URL ? makeNeon(process.env.DATABASE_URL) : makePglite();
+    globalForDb.__sidexDb = databaseUrl ? makeNeon(databaseUrl) : makePglite();
   }
   return globalForDb.__sidexDb;
 }
@@ -49,5 +53,5 @@ export function getDb(): Db {
   return real();
 }
 
-export const isLocalDb = !process.env.DATABASE_URL;
+export const isLocalDb = !databaseUrl;
 export { schema };
