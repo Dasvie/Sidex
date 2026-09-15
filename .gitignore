@@ -1,0 +1,24 @@
+# dependencies and build output
+node_modules/
+web/.next/
+web/next-env.d.ts
+web/tsconfig.tsbuildinfo
+
+# local database (PGlite) and local upload fallback
+web/.pglite/
+web/public/uploads/
+
+# test artefacts
+web/test-results/
+web/playwright-report/
+
+# secrets: only .env.example is tracked
+.env
+.env.*
+!.env.example
+
+# editor / os
+.DS_Store
+Thumbs.db
+.claude/state/
+.claude/sessions/

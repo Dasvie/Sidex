@@ -1,0 +1,1 @@
+ALTER TABLE "product" ADD COLUMN "maker_detail_en" text DEFAULT '' NOT NULL;

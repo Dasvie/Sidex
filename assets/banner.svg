@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="Sidex. 프로덕트와 아이디어를 둘러보는 카탈로그">
+  <rect width="1200" height="400" rx="28" fill="#f5f5f5"/>
+  <circle cx="1010" cy="70" r="170" fill="#f4c5a8" opacity="0.35"/>
+  <circle cx="1130" cy="330" r="140" fill="#a8c8e8" opacity="0.35"/>
+  <g transform="translate(96 128)">
+    <rect width="144" height="144" rx="32" fill="#ffffff" stroke="#e7e5e4"/>
+    <g transform="translate(0 0) scale(0.28125)">
+      <circle cx="118" cy="118" r="46" fill="#0c0a09"/>
+      <circle cx="256" cy="118" r="46" fill="#0c0a09"/>
+      <circle cx="394" cy="118" r="58" fill="#13bd7e"/>
+      <circle cx="118" cy="256" r="46" fill="#0c0a09"/>
+      <circle cx="256" cy="256" r="46" fill="#0c0a09"/>
+      <circle cx="394" cy="256" r="46" fill="#0c0a09"/>
+      <circle cx="118" cy="394" r="46" fill="#0c0a09"/>
+      <circle cx="256" cy="394" r="46" fill="#0c0a09"/>
+      <circle cx="394" cy="394" r="46" fill="#0c0a09"/>
+    </g>
+  </g>
+  <g font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', sans-serif" fill="#0c0a09">
+    <text x="290" y="186" font-size="88" font-weight="700" letter-spacing="-3">Sidex</text>
+    <text x="294" y="240" font-size="30" font-weight="500" fill="#4e4e4e">프로덕트와 아이디어를 둘러보는 카탈로그</text>
+    <g transform="translate(294 272)">
+      <circle cx="6" cy="8" r="6" fill="#13bd7e"/>
+      <text x="22" y="14" font-size="20" fill="#6e6861">리뷰와 논평이 순위를 정해요 · 기획 지도로 만든 이유를 남겨요</text>
+    </g>
+  </g>
+</svg>
