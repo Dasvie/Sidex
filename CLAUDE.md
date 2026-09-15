@@ -72,7 +72,7 @@ web/                      정본
 
 ## 6. 남은 일
 
-- 로그인 제공자 키, Neon, Blob 토큰, Anthropic 키: 사용자 입력 대기. 받으면 `/deploy`.
-- 첫 배포 뒤 `npm run db:claim -- sidex <이메일>` 로 @sidex 를 실제 계정에 넘긴다.
-- Sidex 자신의 스크린샷 4장(홈·상세·등록·프로필)을 실제 화면으로 찍어 올린다.
+- 배포됨: https://sidex-pi.vercel.app (Vercel 프로젝트 `sidex`, Neon `sidex-db`, Blob `sidex-blob`, Google·Kakao·Naver 로그인). 빌드가 `db:migrate && db:seed` 를 돈다(`web/vercel.json`). `OWNER_EMAIL` 첫 로그인에 @sidex 자동 이전. 상태는 `/api/health`.
+- Anthropic 키(도우미·기획 초안)와 Upstash(요청 제한)는 선택. 없으면 각 기능이 조용히 꺼진다.
 - 등록 시 첫 스크린샷 자동 캡처는 아직 없다. 등록자가 올린다.
+- 커스텀 도메인을 붙이면 `AUTH_URL`·`NEXT_PUBLIC_SITE_URL` 과 세 OAuth 콘솔의 콜백 URI 를 함께 바꾼다.

@@ -6,6 +6,7 @@
 
 **한국 개발자와 바이브코더가 만든 프로덕트를 등록하고, 리뷰와 논평으로 순위가 정해지는 카탈로그.**
 
+[![Live](https://img.shields.io/badge/live-sidex--pi.vercel.app-13bd7e?style=flat-square)](https://sidex-pi.vercel.app)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-0c0a09?style=flat-square&logo=next.js&logoColor=white)](web)
 [![Postgres · Drizzle](https://img.shields.io/badge/Postgres-Drizzle-0c0a09?style=flat-square&logo=postgresql&logoColor=white)](web/src/db/schema.ts)
 [![Tests](https://img.shields.io/badge/tests-unit%2015%20%C2%B7%20e2e%2035-13bd7e?style=flat-square)](web/tests)
@@ -23,6 +24,8 @@
 <br />
 
 > 배포용 URL 하나로 등록하면 프로덕트 페이지가 생기고 랭킹에 실려요. 순위는 오직 리뷰와 논평이 만들어요.
+>
+> 지금 바로: **https://sidex-pi.vercel.app**
 
 <hr />
 
@@ -94,7 +97,15 @@ npm run e2e                                      # dev 서버를 켜 둔 채로
 
 ## 배포
 
-Vercel, Root Directory `web`. 환경 변수는 [`web/.env.example`](web/.env.example)에 전부 적혀 있어요. 첫 배포 뒤 `npm run db:migrate && npm run db:seed`, 그다음 `npm run db:claim -- sidex <이메일>`로 예시 계정을 실제 계정에 넘겨요. 빠진 설정은 `/api/health`가 알려줘요.
+Vercel에서 돌아가요. Root Directory `web`, 나머지는 리포에 다 들어 있어요.
+
+1. Vercel에서 이 리포를 Import, Root Directory를 `web`으로.
+2. Storage 탭에서 **Neon**(변수 접두사 `DATABASE`)과 **Blob**(read-write 토큰 포함)을 연결. `DATABASE_URL`·`DATABASE_POSTGRES_URL`·`POSTGRES_URL` 어느 이름이든 읽어요.
+3. 환경 변수: `AUTH_SECRET`(`npx auth secret`), `AUTH_URL`·`NEXT_PUBLIC_SITE_URL`(배포 주소), 로그인 제공자 키(`AUTH_GOOGLE_*`, `AUTH_KAKAO_*`, `AUTH_NAVER_*` 중 있는 것), `OWNER_EMAIL`(만든 사람 이메일). 전체 목록은 [`web/.env.example`](web/.env.example).
+4. 배포. 빌드 때 마이그레이션과 시드가 자동으로 돌아요([`web/vercel.json`](web/vercel.json)). `OWNER_EMAIL` 계정이 처음 로그인하면 예시 계정 @sidex가 그 계정으로 넘어와요.
+5. `/api/health`가 빠진 설정을 알려줘요. `ready: true`면 끝.
+
+OAuth 콜백은 `https://<도메인>/api/auth/callback/google`, `/kakao`, `/naver`.
 
 ## 원칙
 
@@ -104,8 +115,19 @@ Vercel, Root Directory `web`. 환경 변수는 [`web/.env.example`](web/.env.exa
 
 ## 기여
 
-이슈와 PR 환영해요. 규칙은 [`CLAUDE.md`](CLAUDE.md)에 있어요(에이전트용이지만 사람이 읽어도 같은 내용이에요).
+이슈와 PR 환영해요. 방법은 [CONTRIBUTING.md](CONTRIBUTING.md), 규칙은 [`CLAUDE.md`](CLAUDE.md)에 있어요(에이전트용이지만 사람이 읽어도 같은 내용이에요). 보안 문제는 [SECURITY.md](SECURITY.md)대로 알려 주세요.
 
 ## 라이선스
 
 [MIT](LICENSE)
+
+---
+
+<details>
+<summary><b>English</b></summary>
+
+**Sidex** is a catalog where Korean developers and vibe coders register their products. Ranking is decided only by other people's reviews and comments: `reviews × 3 + comments × 1 + replies × 0.5`. No upvotes, no date-based ranking, no ads. Each product also carries a planning map (eight product questions, four levels deep, per category) where the maker records their decisions and readers agree or disagree, plus a rendered DESIGN.md.
+
+Stack: Next.js 16 App Router, React 19, TypeScript, Postgres (Neon) with Drizzle (PGlite locally), Auth.js v5 (Google, Kakao, Naver), Vercel Blob, Pretendard. Run locally with `cd web && npm install && npm run db:migrate && npm run db:seed && npm run dev`. The UI is Korean by default with an English toggle in the footer. Live at https://sidex-pi.vercel.app.
+
+</details>
