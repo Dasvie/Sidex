@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import { db, getDb } from "@/db";
 import { accounts, profiles, sessions, users, verificationTokens } from "@/db/schema";
 import { deriveHandle } from "@/lib/slug";
+import { claimSeeded, seededUnclaimed } from "@/lib/claim";
 
 const providers = [
   process.env.AUTH_GOOGLE_ID && Google,
@@ -47,6 +48,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth(() => ({
         displayName: user.name || handle,
         avatarUrl: user.image || "",
       });
+    },
+    // The owner's first sign-in takes over the seeded @sidex (products, handle), so the
+    // deployment never needs a terminal step. OWNER_EMAIL is set on Vercel; runs until claimed.
+    async signIn({ user }) {
+      const owner = process.env.OWNER_EMAIL;
+      if (!owner || !user.id || !user.email || user.email.toLowerCase() !== owner.toLowerCase()) return;
+      if (await seededUnclaimed("sidex", user.id)) await claimSeeded("sidex", user.email);
     },
   },
   callbacks: {
